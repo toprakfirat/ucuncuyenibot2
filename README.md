@@ -1,4 +1,4 @@
 # ucuncuyenibot2
-The Turkish Indie Rock Band Name generator 
+The Turkish Indie Rock Band Album Cover Generator 
 
-Import Grupadi.py and use "son()" function to create a randomly generated band name. 
+Import Albumkapagi.py and use "albumkapagi()" function to create a randomly generated album cover.
