@@ -149,5 +149,5 @@ def son():
                 grupadi=grupis[0][0]+eklerfis[zar2][grupis[0][1]]+' '+grupis[1][0]+' '+grupis[2][0]
             else:
                 grupadi=grupis[0][0]+ekler[zar2][grupis[0][1]]+' '+grupis[1][0]+' '+grupis[2][0]     
-
+    print(grupadi)
     return grupadi

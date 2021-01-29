@@ -1,9 +1,7 @@
-import requests
-import urllib.parse
-from bs4 import BeautifulSoup
-
-
-def kelbul(): 
+def kelbul():
+    import requests
+    import urllib.parse
+    from bs4 import BeautifulSoup
     kelimeler=[]
 
     #kelime alici ve birlestirici
@@ -18,24 +16,20 @@ def kelbul():
     soup = BeautifulSoup(text, "html.parser")
     alar = (soup.find_all('a'))
 
+    print(alar)
         #html koddan a href kodlulari ayirdik
     kelime = (soup.title.string)
     kelime = kelime.split()
     kelime = kelime[0]
 
         #49.a'da random kelimenin kodu var onu aldik cevirdik, htmlde kod bozuluyo urllible duzelttik
-    ranlink = str(alar).split('Â« Ãnceki sayfa</a>,')[1].split('>Rastgele kelime</a>')[0].split('"')[1]
-
-    url2 = 'https://www.nisanyansozluk.com/' + ranlink
-    r = requests.get(url2)
-    r.encoding = 'UTF-8'
-    text= r.text
-
-
-    soup = BeautifulSoup(text, "html.parser")
-    title = (soup.find_all('title'))
-    pisbaslik = str(title[0])
-    kelime = pisbaslik.replace('<title>','').split(' - N')[0]
+    rankel= alar[49]
+    rankel=str(rankel)
+    rankel=rankel.split('"')
+    rankel=rankel[1]
+    rankel=str(rankel)
+    kelime = urllib.parse.unquote(rankel[3:])
+    kelime =str(kelime)
     kelime = kelime.capitalize()
 
         #bazi kelimelerin sonunda - var onu silip ek eklemek lazim (yig-, sayili olanlar var, hav2, tok1 gibi), (o)+'lular var, ufal-), yüz-2
@@ -54,4 +48,8 @@ def kelbul():
 
     hdata.close
 
-    return kelime
+    return str(kelime)
+
+
+
+print(kelbul())
